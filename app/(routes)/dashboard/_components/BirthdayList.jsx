@@ -6,6 +6,7 @@ import RibbonOne from "../../../../public/celefloat.png";
 import RibbonTwo from "../../../../public/celefloat2.png";
 import Image from "next/image";
 import axios from "axios";
+import { liveUrl } from "@/constants/url";
 
 const BirthdayList = () => {
   const [birthdays, setBirthdays] = useState([]);
@@ -15,7 +16,7 @@ const BirthdayList = () => {
 
   const getDataFromApi = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/tasks");
+      const res = await axios.get(`${liveUrl}/tasks`);
       const apiRes = await res.data;
       setBirthdays(apiRes);
     } catch (error) {
