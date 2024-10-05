@@ -1,1 +1,1 @@
-export const liveUrl = "https://birthappback.onrender.com"
+export const liveUrl = "https://birth-app-back.vercel.app"
