@@ -16,7 +16,8 @@ const BirthdayList = () => {
 
   const getDataFromApi = async () => {
     try {
-      const res = await axios.get(`${liveUrl}/tasks`);
+      const res = await axios.get(`${liveUrl}/tasks`, {headers: {'x-api-key': 'process.env.APP_KEY'}
+});
       const apiRes = await res.data;
       setBirthdays(apiRes);
     } catch (error) {
