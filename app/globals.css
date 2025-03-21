@@ -64,3 +64,38 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+.scrollbar::-webkit-scrollbar {
+  width: 2px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 2px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #e7e5e5;
+  border-radius: 2px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #d1cfcf;
+}
+
+
+.typewriter {
+  display: inline-block;
+  /* font-family: monospace; Optional */
+}
+
+.cursor {
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
