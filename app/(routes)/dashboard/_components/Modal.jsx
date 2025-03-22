@@ -73,7 +73,7 @@ export default function Modal({ open, setOpen, onClose }) {
     if (file && excelData) {
       try {
         // return
-        const response = await fetch(`http://192.168.222.206:8000/bulk-upload`, {
+        const response = await fetch(`${liveUrl}/bulk-upload`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
