@@ -1,13 +1,22 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 import { OrganizationSwitcher, UserButton, useAuth, useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import Modal from "./Modal";
+import Logo from '../../../../public/willbll.png'
+import Image from "next/image";
+
 const Header = () => {
   const router = useRouter();
+  const [open, setOpen] = useState(false);
+  const { user } = useUser();
+  const userRole = user?.organizationMemberships[0]?.role;
+  const canAccessButton = userRole === "org:admin" || userRole === "org:editor";
 
   return (
     <div className="px-5">
+      <Modal open={open} setOpen={setOpen}></Modal>
       <nav className="z-10 w-full ">
         <div>
           <div className="flex flex-wrap items-center justify-between py-2 gap-6 md:py-4 md:gap-0 relative">
@@ -21,7 +30,7 @@ const Header = () => {
             <div className="relative z-20 w-full flex justify-between lg:w-max md:px-0">
               {/* <a href="/dashboard" aria-label="logo" className="flex space-x-2 items-center"> */}
               {/* <Logo /> */}
-              <h2>Logo</h2>
+              <Image src={Logo} alt="Logo" width={100} height={100} className="w-32 h-full mix-blend-soft-light" />
               {/* </a> */}
 
               <div className="relative flex items-center lg:hidden max-h-10">
@@ -59,7 +68,7 @@ const Header = () => {
                 <ul className="tracking-wide font-medium lg:text-sm flex-col flex lg:flex-row gap-2 lg:gap-2">
                   <li>
                     <Button
-                    variant="black"
+                      variant="black"
                       onClick={() => {
                         router.push("/");
                       }}
@@ -69,9 +78,11 @@ const Header = () => {
                     </Button>
                   </li>
                   <li>
-                    <Button   size="sm">
-                      Add Birthday
-                    </Button>
+                    {canAccessButton && (
+                      <Button onClick={() => setOpen(true)} size="sm">
+                        Add Birthday
+                      </Button>
+                    )}
                   </li>
                   <UserButton />
                 </ul>
