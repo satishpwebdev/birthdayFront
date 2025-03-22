@@ -1,5 +1,6 @@
 import React from "react";
-
+import Logo from '../../public/willbll.png'
+import Image from "next/image";
 const Header = () => {
   return (
     <div className="px-5">
@@ -16,7 +17,8 @@ const Header = () => {
             <div className="relative z-20 w-full flex justify-between lg:w-max md:px-0">
               {/* <a href="/dashboard" aria-label="logo" className="flex space-x-2 items-center"> */}
               {/* <Logo /> */}
-              <h2>Logo</h2>
+              <Image src={Logo} alt="Logo" width={100} height={100} className="w-32 h-full mix-blend-soft-light" />
+
               {/* </a> */}
 
               <div className="relative flex items-center lg:hidden max-h-10">
